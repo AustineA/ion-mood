@@ -1,0 +1,7 @@
+{
+  "name": "ion-mood",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
