@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -25,6 +25,7 @@ import { IonicModule } from '@ionic/angular';
       .mood-card {
         min-height: 120px;
         border-radius: 15px;
+        margin-bottom: 15px;
       }
       .mood-emoji {
         font-size: 50px;
@@ -64,13 +65,8 @@ import { IonicModule } from '@ionic/angular';
   ],
 })
 export class MoodCardComponent implements OnInit {
-  entry = {
-    emoji: '😆',
-    mood: 'An Awesome Day',
-    note: 'Buy and  sell everything iPhone related.',
-    date: '12 Dec. 2022',
-    color: '#CCFFED',
-  };
+  @Input() entry: any;
+
   constructor() {}
 
   ngOnInit() {}

@@ -6,6 +6,11 @@
 
 <ion-content class="ion-padding">
   <div>
-    <moodcard-component></moodcard-component>
+    <moodcard-component
+      *ngFor="let entry of entries"
+      [entry]="entry"
+    ></moodcard-component>
   </div>
+
+  <fbc title="Entry"></fbc>
 </ion-content>
