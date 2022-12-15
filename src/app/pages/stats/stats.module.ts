@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { StatsPageRoutingModule } from './stats-routing.module';
 
 import { StatsPage } from './stats.page';
+import { StreakModule } from 'src/app/components/streak.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    StatsPageRoutingModule
+    StreakModule,
+    StatsPageRoutingModule,
   ],
-  declarations: [StatsPage]
+  declarations: [StatsPage],
 })
 export class StatsPageModule {}

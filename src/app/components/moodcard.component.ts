@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 @Component({
   selector: 'moodcard-component',
   template: `
-    <div class="mood-card ion-padding" [style]="'background: ' + entry.color">
+    <div class="card ion-padding" [style]="'background: ' + entry.color">
       <div class="mood-body">
         <div class="mood-emoji">{{ entry.emoji }}</div>
         <div class="mood-content">
@@ -22,11 +22,6 @@ import { IonicModule } from '@ionic/angular';
   `,
   styles: [
     `
-      .mood-card {
-        min-height: 120px;
-        border-radius: 15px;
-        margin-bottom: 15px;
-      }
       .mood-emoji {
         font-size: 50px;
         line-height: 50px;
