@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { MoodCardModule } from '../../components/moodcard.component';
 import { IonicModule } from '@ionic/angular';
 
 import { EntryPageRoutingModule } from './entry-routing.module';
@@ -13,8 +13,9 @@ import { EntryPage } from './entry.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    EntryPageRoutingModule
+    EntryPageRoutingModule,
+    MoodCardModule,
   ],
-  declarations: [EntryPage]
+  declarations: [EntryPage],
 })
 export class EntryPageModule {}
