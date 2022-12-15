@@ -24,3 +24,24 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+ion-tab-bar {
+  position: relative;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  border-radius: 30px;
+  padding-bottom: 0;
+  border: 1px solid rgba(0, 5, 5, 0.08);
+  height: 70px;
+  overflow: hidden;
+  box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.08);
+}
+
+ion-tabs {
+  background-color: white;
+}
+
+ion-tab-button {
+  background: white;
+}

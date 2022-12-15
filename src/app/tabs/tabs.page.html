@@ -1,4 +1,4 @@
-<ion-tabs>
+<!-- <ion-tabs>
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="entry">
       <ion-icon name="triangle"></ion-icon>
@@ -13,6 +13,38 @@
     <ion-tab-button tab="report">
       <ion-icon name="square"></ion-icon>
       <ion-label>Tab 3</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs> -->
+
+<ion-tabs (ionTabsDidChange)="setCurrentTab($event)">
+  <ion-tab-bar slot="bottom" mode="ios">
+    <ion-tab-button tab="entry">
+      <ion-icon
+        name="newspaper-outline"
+        [color]="currentTab == 'entry' ? 'dark' : ''"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="stats">
+      <ion-icon
+        name="pie-chart-outline"
+        [color]="currentTab == 'stats' ? 'dark' : ''"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="report">
+      <ion-icon
+        name="calendar-outline"
+        [color]="currentTab == 'report' ? 'dark' : ''"
+      ></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="setting">
+      <ion-icon
+        name="settings-outline"
+        [color]="currentTab == 'settings' ? 'dark' : ''"
+      ></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

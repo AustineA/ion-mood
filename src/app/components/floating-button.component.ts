@@ -16,8 +16,8 @@ import { IonicModule } from '@ionic/angular';
     `
       .floating-button {
         position: fixed;
-        bottom: 1rem;
-        right: 1rem;
+        bottom: 40px;
+        right: 18px;
         z-index: 10000;
       }
 
