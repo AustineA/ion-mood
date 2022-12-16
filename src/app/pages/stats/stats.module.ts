@@ -8,6 +8,7 @@ import { StatsPageRoutingModule } from './stats-routing.module';
 
 import { StatsPage } from './stats.page';
 import { StreakModule } from 'src/app/components/streak.component';
+import { MoodCountModule } from 'src/app/components/mood-count.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { StreakModule } from 'src/app/components/streak.component';
     FormsModule,
     IonicModule,
     StreakModule,
+    MoodCountModule,
     StatsPageRoutingModule,
   ],
   declarations: [StatsPage],
