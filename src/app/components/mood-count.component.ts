@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, NgModule, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import Chart from 'chart.js/auto';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'mood-count-component',
@@ -12,6 +13,7 @@ import Chart from 'chart.js/auto';
           <div class="longest-streak">
             <h3>Mood Count</h3>
             <div class="chart">
+              <h1 class="total-count">{{ totalCount() }}</h1>
               <canvas id="reportChart">{{ chart }}</canvas>
             </div>
           </div>
@@ -29,11 +31,16 @@ import Chart from 'chart.js/auto';
   `,
   styles: [
     `
+      canvas {
+        scale: 1.3;
+      }
       .chart {
         margin: 20px 0;
+        /* overflow: hidden; */
       }
       .mood-count {
-        background: #f0fffa;
+        background: #d3fff0;
+        margin-top: 40px;
       }
 
       h3 {
@@ -44,7 +51,8 @@ import Chart from 'chart.js/auto';
       }
 
       .longest-streak {
-        border-bottom: 1px solid #dff2ec;
+        border-bottom: 1px solid #a6eed6;
+        position: relative;
       }
 
       .cell {
@@ -66,6 +74,15 @@ import Chart from 'chart.js/auto';
         display: flex;
         gap: 15px;
         justify-content: space-between;
+      }
+
+      .total-count {
+        font-size: 80px;
+        font-weight: bold;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 60%;
       }
     `,
   ],
@@ -110,6 +127,12 @@ export class MoodCountComponent implements OnInit {
     this.createChart();
   }
 
+  totalCount() {
+    return this.moods.reduce((accumulator, item) => {
+      return accumulator + item.count;
+    }, 0);
+  }
+
   colors() {
     return this.moods.map((mood) => mood.color);
   }
@@ -132,19 +155,20 @@ export class MoodCountComponent implements OnInit {
           {
             data: this.data(),
             backgroundColor: this.colors(),
-            hoverOffset: 10,
-            borderWidth: 0,
+            hoverOffset: 20,
+            borderWidth: 1.5,
+            borderColor: '#000',
             borderRadius: [
               {
-                outerStart: 24,
-                innerStart: 24,
+                outerStart: 10,
+                innerStart: 10,
               },
               0,
               0,
               0,
               {
-                outerEnd: 24,
-                innerEnd: 24,
+                outerEnd: 10,
+                innerEnd: 10,
               },
             ],
           },
@@ -154,6 +178,7 @@ export class MoodCountComponent implements OnInit {
         circumference: 180,
         rotation: -90,
         aspectRatio: 2,
+        animation: false,
         cutout: '70%',
         layout: {
           padding: 20,
