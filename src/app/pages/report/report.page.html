@@ -1,9 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>report</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar mode="md">
+    <div class="entry-month-controls">
+      <ion-buttons>
+        <ion-button mode="ios">
+          <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Year Report - 2022</ion-title>
+      <ion-buttons>
+        <ion-button mode="ios">
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-padding">
+  <calendar-component></calendar-component>
 </ion-content>

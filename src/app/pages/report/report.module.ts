@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ReportPageRoutingModule } from './report-routing.module';
+import { CalendarModule } from '../../components/calendar.component';
 
 import { ReportPage } from './report.page';
 
@@ -13,8 +14,9 @@ import { ReportPage } from './report.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ReportPageRoutingModule
+    CalendarModule,
+    ReportPageRoutingModule,
   ],
-  declarations: [ReportPage]
+  declarations: [ReportPage],
 })
 export class ReportPageModule {}
