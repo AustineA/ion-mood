@@ -95,6 +95,7 @@ export class MoodCountComponent implements OnInit {
       count: 5,
       color: '#CCFFED',
       mood: 'Awesome Days',
+      date: '',
     },
     {
       emoji: '😊',

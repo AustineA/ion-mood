@@ -36,7 +36,7 @@ import { IonicModule } from '@ionic/angular';
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
-        font-family: 'New York', 'Roboto Serif', serif;
+        font-family: 'Tinos', serif;
       }
 
       .mood-meta h3 {
