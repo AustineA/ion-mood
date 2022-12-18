@@ -5,10 +5,7 @@ import {
   differenceInDays,
   endOfMonth,
   isSameDay,
-  parseISO,
-  eachDayOfInterval,
   startOfMonth,
-  parse,
 } from 'date-fns';
 
 @Component({
@@ -27,11 +24,10 @@ import {
             "
             class="day"
           >
-            <div>
-              {{ _index + 1 }}
-
-              <!-- <div *ngIf="moodDay(day)" [class]="'isMood'"></div> -->
-            </div>
+            <div
+              *ngIf="moodDay(_index + 1, i + 1); let mood"
+              [class]="'isMood ' + 'mood-' + mood?.rate"
+            ></div>
           </div>
         </div>
       </div>
@@ -65,18 +61,31 @@ import {
         height: 15px;
       }
 
-      .isMood {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: red;
-        top: 0;
-        left: 0;
+      .day:has(.mood-1) {
+        background-color: #ccffed;
+        border: 1px solid #ccffed;
+      }
+      .day:has(.mood-2) {
+        background-color: #e3feb8;
+        border: 1px solid #e3feb8;
+      }
+      .day:has(.mood-3) {
+        background-color: #d8e5ef;
+        border: 1px solid #d8e5ef;
+      }
+      .day:has(.mood-4) {
+        background-color: #f5dfc9;
+        border: 1px solid #f5dfc9;
+      }
+      .day:has(.mood-5) {
+        background-color: #f4c2c4;
+        border: 1px solid #f4c2c4;
       }
     `,
   ],
 })
 export class CalendarComponent implements OnInit {
+  thisYear = new Date().getFullYear();
   entries = [
     {
       color: '#CCFFED',
@@ -148,17 +157,13 @@ export class CalendarComponent implements OnInit {
   months = 12;
   constructor() {}
 
-  ngOnInit() {
-    // this.diffInDays(1);
-  }
+  ngOnInit() {}
 
-  moodDay(day: Date) {
-    return this.entries.some((item) => {
-      if (isSameDay(parseISO(item?.date), day)) {
-        return item;
-      }
+  moodDay(day: number, month: number) {
+    const date = `${this.thisYear}-${month}-${day}`;
 
-      return false;
+    return this.entries.find((item) => {
+      return isSameDay(new Date(item?.date), new Date(date));
     });
   }
 
@@ -182,8 +187,6 @@ export class CalendarComponent implements OnInit {
       this.endMonth(dateMonth),
       this.startMonth(dateMonth)
     );
-
-    console.log(d + 1);
     return d + 1;
   }
 }
