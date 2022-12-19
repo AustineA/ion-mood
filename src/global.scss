@@ -47,3 +47,8 @@ ion-tabs {
 ion-tab-button {
   background: white;
 }
+
+ion-textarea.paper-addictional-note .native-textarea {
+  overflow: auto !important;
+  padding: 15px !important;
+}
