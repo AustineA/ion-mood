@@ -85,7 +85,7 @@ import {
   ],
 })
 export class CalendarComponent implements OnInit {
-  thisYear = '2022';
+  thisYear = new Date().getFullYear();
   entries = [
     {
       color: '#CCFFED',

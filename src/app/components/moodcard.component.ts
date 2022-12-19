@@ -36,18 +36,18 @@ import { IonicModule } from '@ionic/angular';
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
-        font-family: 'Tinos', serif;
+        /* font-family: 'Tinos', serif; */
       }
 
       .mood-meta h3 {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: bold;
         margin: 0;
       }
 
       .mood-meta span {
         color: #696969;
-        font-size: 14px;
+        font-size: 12px;
       }
 
       .mood-content {
