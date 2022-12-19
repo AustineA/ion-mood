@@ -59,15 +59,25 @@ export class EntryPage implements OnInit {
 
   async newEntry() {
     const modal = await this.modalCtrl.create({
-      swipeToClose: true,
+      canDismiss: true,
       cssClass: 'new-entry-sheet',
       presentingElement: this.presentingElement,
       mode: 'ios',
       component: NewEntryComponent,
+      componentProps: {
+        modalCtrl: this.modalCtrl,
+      },
     });
 
     await modal.present();
 
-    const { data } = await modal.onWillDismiss();
+    const {
+      data: { entry },
+    } = await modal.onWillDismiss();
+
+    if (entry) {
+      this.entries = [entry, ...this.entries];
+      console.log(entry);
+    }
   }
 }

@@ -16,10 +16,14 @@ import { FormsModule } from '@angular/forms';
         >
       </div>
       <div class="mood-cells">
-        <div *ngFor="let mood of moods" class="cell">
+        <div
+          *ngFor="let mood of moods; let i = index"
+          class="cell"
+          (click)="selectMood(i)"
+        >
           {{ mood?.emoji }}
-          <span>
-            {{ mood?.mood }}
+          <span [ngClass]="{ 'selected-mood': selected == i }">
+            {{ mood?.title }}
           </span>
         </div>
       </div>
@@ -30,6 +34,16 @@ import { FormsModule } from '@angular/forms';
           placeholder="Leave a note for your self..."
           class="paper-addictional-note"
         ></ion-textarea>
+      </div>
+      <div class="done-btn">
+        <ion-button
+          expand="block"
+          mode="ios"
+          color="mood"
+          type="submit"
+          (click)="done()"
+          >Done
+        </ion-button>
       </div>
     </ion-content>
   `,
@@ -69,22 +83,30 @@ import { FormsModule } from '@angular/forms';
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        font-size: 50px;
+        font-size: 40px;
+        padding: 15px;
+        overflow: hidden;
       }
 
       .cell span {
         font-size: 12px;
       }
 
+      .selected-mood {
+        padding-bottom: 5px;
+        border-bottom: 2px solid #7eb527;
+      }
+
       .mood-cells {
         margin-top: 20px;
         display: flex;
-        gap: 15px;
-        justify-content: space-between;
+        margin-left: -10px;
+        /* justify-content: space-between; */
+        align-items: center;
       }
 
       .note {
-        margin-top: 50px;
+        margin-top: 30px;
       }
 
       ion-textarea,
@@ -97,48 +119,81 @@ import { FormsModule } from '@angular/forms';
         border: 1px solid #000000;
         border-radius: 15px;
       }
+
+      .done-btn {
+        margin-top: 50px;
+      }
     `,
   ],
 })
 export class NewEntryComponent implements OnInit {
   note: string;
+  selected: number;
+  date: Date;
+  modalCtrl;
 
   moods = [
     {
       emoji: '😆',
-      count: 5,
+      mood: 'An Awesome Day',
+      title: 'Awesome',
+      note: 'Buy and  sell everything iPhone related.',
+      date: '12 Dec. 2022',
       color: '#CCFFED',
-      mood: 'Awesome!',
-      date: '',
     },
     {
       emoji: '😊',
-      count: 3,
+      mood: 'A Good Day',
+      title: 'Good',
+      note: 'Buy and  sell everything iPhone related.',
+      date: '12 Dec. 2022',
       color: '#E3FEB8',
-      mood: 'Good!',
     },
     {
       emoji: '😐',
-      count: 6,
+      mood: 'A Meh Day',
+      title: 'Meh',
+      note: 'Buy and  sell everything iPhone related.',
+      date: '12 Dec. 2022',
       color: '#D8E5EF',
-      mood: 'Meh',
     },
     {
       emoji: '😢',
-      count: 2,
+      mood: 'A Bad Day',
+      title: 'Bad',
+      note: 'Buy and  sell everything iPhone related.',
+      date: '12 Dec. 2022',
       color: '#F5DFC9',
-      mood: 'Bad',
     },
     {
       emoji: '😣',
-      count: 1,
+      mood: 'An Awful Day',
+      title: 'Awful',
+      note: 'Buy and  sell everything iPhone related.',
+      date: '12 Dec. 2022',
       color: '#F4C2C4',
-      mood: 'Awful',
     },
   ];
   constructor() {}
 
   ngOnInit() {}
+
+  done() {
+    const f = {
+      ...this.moods[this.selected],
+      note: this.note,
+    };
+
+    this.modalCtrl.dismiss({
+      event: true,
+      entry: f,
+    });
+  }
+
+  selectMood(index) {
+    this.selected = index;
+    console.log(index);
+  }
 }
 
 @NgModule({
