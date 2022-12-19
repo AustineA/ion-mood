@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { NewEntryComponent } from '../../components/new-entry.component';
 
 @Component({
   selector: 'app-entry',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry.page.scss'],
 })
 export class EntryPage implements OnInit {
+  isModalOpen = false;
+  presentingElement = null;
   entries = [
     {
       emoji: '😆',
@@ -43,7 +47,27 @@ export class EntryPage implements OnInit {
       color: '#F4C2C4',
     },
   ];
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.presentingElement = document.querySelector('.ion-page');
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  async newEntry() {
+    const modal = await this.modalCtrl.create({
+      swipeToClose: true,
+      cssClass: 'new-entry-sheet',
+      presentingElement: this.presentingElement,
+      mode: 'ios',
+      component: NewEntryComponent,
+    });
+
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+  }
 }

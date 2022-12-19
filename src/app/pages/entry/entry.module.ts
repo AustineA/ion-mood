@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MoodCardModule } from '../../components/moodcard.component';
 import { FloadtingButtonModule } from '../../components/floating-button.component';
+import { NewEntryModule } from '../../components/new-entry.component';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -17,6 +18,7 @@ import { EntryPage } from './entry.page';
     IonicModule,
     EntryPageRoutingModule,
     FloadtingButtonModule,
+    NewEntryModule,
     MoodCardModule,
   ],
   declarations: [EntryPage],
