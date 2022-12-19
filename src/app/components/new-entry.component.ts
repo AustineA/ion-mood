@@ -11,9 +11,18 @@ import { FormsModule } from '@angular/forms';
         <p>On the scale of Awesome - Awful!</p>
         <h1>Rate your day</h1>
         <span>
-          <ion-icon name="calendar-outline" color="mood"></ion-icon> 19 Dec 22,
-          12:50 pm</span
-        >
+          <ion-icon name="calendar-outline" color="mood"></ion-icon>
+          <ion-datetime-button datetime="datetime"></ion-datetime-button
+        ></span>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime
+              id="datetime"
+              [(ngModel)]="date"
+              name="date"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
       </div>
       <div class="mood-cells">
         <div
