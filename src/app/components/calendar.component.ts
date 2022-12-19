@@ -85,85 +85,90 @@ import {
   ],
 })
 export class CalendarComponent implements OnInit {
-  thisYear = new Date().getFullYear();
+  thisYear = '2022';
   entries = [
     {
       color: '#CCFFED',
       rate: 1,
-      date: '2022-01-01',
+      date: '2022-1-1',
     },
     {
       color: '#E3FEB8',
       rate: 2,
-      date: '2022-02-01',
+      date: '2022-2-1',
     },
     {
       color: '#D8E5EF',
       rate: 3,
-      date: '2022-03-01',
+      date: '2022-3-1',
     },
     {
       color: '#F5DFC9',
       rate: 4,
-      date: '2022-04-01',
+      date: '2022-4-1',
     },
     {
       color: '#F4C2C4',
       rate: 5,
-      date: '2022-05-01',
+      date: '2022-5-1',
     },
     {
       color: '#F4C2C4',
       rate: 5,
-      date: '2022-05-10',
+      date: '2022-5-10',
     },
     {
       color: '#F4C2C4',
       rate: 3,
-      date: '2022-06-01',
+      date: '2022-6-1',
     },
     {
       color: '#F4C2C4',
       rate: 2,
-      date: '2022-07-01',
+      date: '2022-7-1',
     },
     {
       color: '#F4C2C4',
       rate: 4,
-      date: '2022-08-01',
+      date: '2022-8-1',
     },
     {
       color: '#F4C2C4',
       rate: 1,
-      date: '2022-09-01',
+      date: '2022-9-1',
     },
     {
       color: '#F4C2C4',
       rate: 5,
-      date: '2022-10-01',
+      date: '2022-10-1',
     },
     {
       color: '#F4C2C4',
       rate: 3,
-      date: '2022-11-01',
+      date: '2022-11-1',
     },
     {
       color: '#F4C2C4',
       rate: 1,
-      date: '2022-12-01',
+      date: '2022-12-1',
     },
   ];
 
   months = 12;
+  condition = false;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.condition = true;
+    }, 2000);
+  }
 
   moodDay(day: number, month: number) {
     const date = `${this.thisYear}-${month}-${day}`;
 
     return this.entries.find((item) => {
-      return isSameDay(new Date(item?.date), new Date(date));
+      return item.date === date;
     });
   }
 

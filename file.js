@@ -1,3 +1,15 @@
+//  moodDay(day: number, month: number) {
+//     const date = `${this.thisYear}-${month}-${day}`;
+//     let item;
+
+//     for (var i = 0; i < this.entries.length; i++) {
+//       item = this.entries[i];
+//       if (this.helper.getDate(item.date) == this.helper.getDate(date)) {
+//         return item;
+//       }
+//     }
+//   }
+
 entries = {
   "2022-01-1": {
     color: "#CCFFED",
